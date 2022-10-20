@@ -1,15 +1,19 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["tsconfig.json"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "dependsOn": ["^build", "NEXT_PUBLIC_BASEURL"],
+      "outputs": ["dist/**", ".next/**"],
+      "env": ["NEXT_PUBLIC_BASEURL"]
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "env": ["NEXT_PUBLIC_BASEURL"]
     },
     "dev": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": ["NEXT_PUBLIC_BASEURL"]
 }
